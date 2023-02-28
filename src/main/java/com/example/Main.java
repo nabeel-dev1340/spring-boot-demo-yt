@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @SpringBootApplication
 @RestController
 public class Main {
@@ -14,8 +16,10 @@ public class Main {
 
     @GetMapping("/")
     public GreetResponse greet(){
-        return new GreetResponse("Hello");
+        GreetResponse response= new GreetResponse("Hello",List.of("Java","GoLang"),new Person("Nabeel"));
+        return response;
     }
 
-    record GreetResponse(String greet){}
+    record Person(String name){}
+    record GreetResponse(String greet, List<String> favProgrammingLanguages, Person person){}
 }
