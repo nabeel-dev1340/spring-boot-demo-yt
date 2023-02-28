@@ -16,8 +16,7 @@ public class Main {
 
     @GetMapping("/")
     public GreetResponse greet(){
-        GreetResponse response= new GreetResponse("Hello",List.of("Java","GoLang"),new Person("Nabeel"));
-        return response;
+        return new GreetResponse("Hello",List.of("Java","GoLang"),new Person("Nabeel"));
     }
 
     record Person(String name){}
