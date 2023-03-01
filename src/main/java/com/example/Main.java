@@ -44,4 +44,14 @@ public class Main {
     public void deleteCustomer(@PathVariable("customerId") Integer id){
         customerRepository.deleteById(id);
     }
+
+    @PutMapping("{customerId}")
+    public void updateCustomer(@RequestBody NewCustomerRequest request, @PathVariable("customerId") Integer id){
+        Customer customerToUpdate=customerRepository.getById(id);
+        customerToUpdate.setName(request.name());
+        customerToUpdate.setEmail(request.email());
+        customerToUpdate.setAge(request.age());
+
+        customerRepository.save(customerToUpdate);
+    }
 }
